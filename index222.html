@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AryanVisuals — Home</title>
+<link rel="stylesheet" href="style.css"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+<style>
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  background:var(--grad);
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;
+}
+.hero-bg-img{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1800&q=80') center/cover no-repeat;
+  opacity:.18;
+  mix-blend-mode:luminosity;
+}
+.hero-orb{
+  position:absolute;width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(200,131,122,.35),transparent 70%);
+  right:-100px;top:-80px;
+}
+.hero-orb2{
+  position:absolute;width:350px;height:350px;border-radius:50%;
+  background:radial-gradient(circle,rgba(107,63,160,.5),transparent 70%);
+  left:-60px;bottom:-60px;
+}
+.hero-content{
+  position:relative;z-index:2;
+  max-width:700px;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.2);
+  padding:8px 20px;border-radius:100px;
+  font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.85);margin-bottom:28px;
+}
+.hero-tag i{color:var(--rose-lt)}
+.hero h1{
+  font-size:clamp(3rem,7vw,5.5rem);
+  color:#fff;font-weight:700;
+  line-height:1.05;margin-bottom:24px;
+}
+.hero h1 em{
+  color:var(--rose-lt);font-style:italic;
+  display:block;font-weight:400;
+}
+.hero-sub{
+  color:rgba(255,255,255,.7);font-size:1.05rem;
+  font-weight:300;line-height:1.8;max-width:480px;margin-bottom:36px;
+}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.hero-scroll-hint{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:rgba(255,255,255,.4);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;
+}
+.scroll-line{
+  width:1px;height:40px;
+  background:linear-gradient(to bottom,rgba(255,255,255,.5),transparent);
+  animation:scrollpulse 2s infinite;
+}
+@keyframes scrollpulse{0%,100%{opacity:.3;transform:scaleY(.8)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ── MARQUEE ── */
+.marquee-strip{
+  background:var(--violet);padding:14px 0;overflow:hidden;
+  border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);
+}
+.marquee-track{
+  display:flex;gap:48px;width:max-content;
+  animation:marquee 20s linear infinite;
+}
+.marquee-track span{
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);white-space:nowrap;display:flex;align-items:center;gap:16px;
+}
+.marquee-track span i{color:var(--rose-lt);font-size:.6rem}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── WHY US ── */
+.why-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+  margin-top:60px;
+}
+.why-card{
+  padding:40px 32px;
+  border:1px solid var(--border);
+  background:var(--white);
+  position:relative;overflow:hidden;
+  transition:transform .3s,box-shadow .3s,border-color .3s;
+}
+.why-card::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--grad);transform:scaleY(0);transform-origin:bottom;
+  transition:transform .35s;
+}
+.why-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(45,27,105,.1);border-color:transparent}
+.why-card:hover::before{transform:scaleY(1)}
+.why-icon{
+  width:52px;height:52px;border-radius:12px;
+  background:linear-gradient(135deg,rgba(45,27,105,.1),rgba(200,131,122,.15));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;color:var(--violet2);margin-bottom:22px;
+}
+.why-card h4{font-size:1.25rem;margin-bottom:10px;color:var(--ink)}
+.why-card p{font-size:.85rem;color:var(--muted);line-height:1.75}
+
+/* ── FEATURED WORK ── */
+.featured-section{background:var(--violet);padding:100px 0}
+.featured-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  grid-template-rows:260px 260px;
+  gap:14px;margin-top:50px;
+}
+.feat-item{overflow:hidden;position:relative;cursor:pointer}
+.feat-item:first-child{grid-row:1/3}
+.feat-item img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s cubic-bezier(.25,.46,.45,.94);
+}
+.feat-item:hover img{transform:scale(1.08)}
+.feat-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(45,27,105,.8) 0%,transparent 55%);
+  opacity:0;transition:opacity .35s;
+  display:flex;align-items:flex-end;padding:22px;
+}
+.feat-item:hover .feat-overlay{opacity:1}
+.feat-overlay-text{color:#fff}
+.feat-overlay-text strong{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;display:block;margin-bottom:2px;
+}
+.feat-overlay-text span{font-size:.72rem;color:var(--rose-lt);letter-spacing:.08em}
+.view-all-wrap{text-align:center;margin-top:44px}
+
+/* ── COUNTERS ── */
+.counters-section{padding:80px 0;background:var(--champagne)}
+.counters-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+}
+.counter-box{text-align:center;padding:36px 20px}
+.counter-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3.5rem;font-weight:700;color:var(--violet);
+  line-height:1;margin-bottom:6px;
+}
+.counter-num span{color:var(--rose)}
+.counter-lbl{
+  font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;
+}
+
+/* ── RECENT BLOGS ── */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:50px}
+.blog-card{background:var(--white);border:1px solid var(--border);overflow:hidden;transition:box-shadow .3s,transform .3s}
+.blog-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(45,27,105,.1)}
+.blog-img{height:210px;overflow:hidden}
+.blog-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.blog-card:hover .blog-img img{transform:scale(1.06)}
+.blog-body{padding:26px 24px}
+.blog-cat{
+  font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--rose);font-weight:600;margin-bottom:10px;display:block;
+}
+.blog-body h4{font-size:1.2rem;color:var(--ink);margin-bottom:10px;line-height:1.3}
+.blog-body p{font-size:.83rem;color:var(--muted);line-height:1.7;margin-bottom:18px}
+.blog-link{
+  font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--violet2);display:inline-flex;align-items:center;gap:6px;
+  transition:gap .2s;
+}
+.blog-link:hover{gap:10px;color:var(--violet)}
+
+/* ── TESTIMONIAL STRIP ── */
+.testi-strip{background:var(--violet);padding:80px 0}
+.testi-slide{max-width:760px;margin:0 auto;text-align:center}
+.testi-quote-icon{font-size:3rem;color:var(--rose-lt);margin-bottom:16px;opacity:.5}
+.testi-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.3rem,2.5vw,1.8rem);
+  font-style:italic;color:rgba(255,255,255,.9);line-height:1.65;
+  margin-bottom:28px;
+}
+.testi-author-wrap{display:flex;align-items:center;justify-content:center;gap:14px}
+.testi-avatar{
+  width:48px;height:48px;border-radius:50%;
+  border:2px solid var(--rose-lt);overflow:hidden;
+}
+.testi-avatar img{width:100%;height:100%;object-fit:cover}
+.testi-name{color:#fff;font-weight:600;font-size:.9rem;text-align:left}
+.testi-role-txt{color:rgba(255,255,255,.45);font-size:.75rem}
+.testi-dots{display:flex;justify-content:center;gap:8px;margin-top:28px}
+.testi-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:rgba(255,255,255,.25);cursor:pointer;transition:all .25s;border:none;
+}
+.testi-dot.active{background:var(--rose-lt);width:22px;border-radius:4px}
+
+@media(max-width:900px){
+  .why-grid{grid-template-columns:1fr 1fr}
+  .featured-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .feat-item:first-child{grid-row:auto}
+  .counters-grid{grid-template-columns:1fr 1fr}
+  .blog-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .why-grid{grid-template-columns:1fr}
+  .hero h1{font-size:2.6rem}
+  .featured-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="nav-wrap" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Aryan<span>Visuals</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+    </ul>
+    <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose"><i class="bi bi-x-lg"></i></button>
+  <a href="index.html" onclick="closeMobile()">Home</a>
+  <a href="portfolio.html" onclick="closeMobile()">Portfolio</a>
+  <a href="services.html" onclick="closeMobile()">Services</a>
+  <a href="about.html" onclick="closeMobile()">About</a>
+  <a href="contact.html" onclick="closeMobile()">Contact</a>
+  <a href="contact.html" onclick="closeMobile()" class="btn-rose" style="font-size:.9rem;padding:12px 36px">Book Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-img"></div>
+  <div class="hero-orb"></div>
+  <div class="hero-orb2"></div>
+  <div class="container">
+    <div class="hero-content reveal">
+      <div class="hero-tag"><i class="bi bi-geo-alt-fill"></i> Jaipur · Pan India Coverage</div>
+      <h1>Where Every<br>Frame Becomes<br><em>A Memory</em></h1>
+      <p class="hero-sub">Award-winning photography for weddings, fashion editorials, and events that deserve to be remembered.</p>
+      <div class="hero-actions">
+        <a href="portfolio.html" class="btn-primary-v">View Portfolio</a>
+        <a href="contact.html" class="btn-rose">Book a Session</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track" id="marqueeTrack">
+    <span>Wedding Photography <i class="bi bi-diamond-fill"></i></span>
+    <span>Fashion Editorials <i class="bi bi-diamond-fill"></i></span>
+    <span>Corporate Events <i class="bi bi-diamond-fill"></i></span>
+    <span>Pre-Wedding Shoots <i class="bi bi-diamond-fill"></i></span>
+    <span>Destination Weddings <i class="bi bi-diamond-fill"></i></span>
+    <span>Brand Campaigns <i class="bi bi-diamond-fill"></i></span>
+    <span>Wedding Photography <i class="bi bi-diamond-fill"></i></span>
+    <span>Fashion Editorials <i class="bi bi-diamond-fill"></i></span>
+    <span>Corporate Events <i class="bi bi-diamond-fill"></i></span>
+    <span>Pre-Wedding Shoots <i class="bi bi-diamond-fill"></i></span>
+    <span>Destination Weddings <i class="bi bi-diamond-fill"></i></span>
+    <span>Brand Campaigns <i class="bi bi-diamond-fill"></i></span>
+  </div>
+</div>
+
+<!-- WHY US -->
+<section class="section-pad">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="sec-eye">Why Choose Us</span>
+      <h2 class="sec-title">Crafted With <em>Intention</em></h2>
+      <div class="sec-bar"></div>
+      <p class="sec-sub mx">We don't just take photographs — we build visual stories that live on your walls and in your hearts.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="bi bi-eye"></i></div>
+        <h4>Artistic Vision</h4>
+        <p>Every frame is composed with intention — light, shadow, emotion, and timing working in perfect harmony.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="bi bi-camera2"></i></div>
+        <h4>Pro Equipment</h4>
+        <p>Sony mirrorless + medium format, prime lenses, drone — delivering clinical sharpness in any condition.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="bi bi-award"></i></div>
+        <h4>8+ Years Experience</h4>
+        <p>Over 350 weddings, 80 fashion campaigns, and 200 events shot across India with 5-star reviews.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="bi bi-lightning-charge"></i></div>
+        <h4>Fast Delivery</h4>
+        <p>Edited galleries delivered in 5–7 business days. Rush 48-hour delivery available on request.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="bi bi-cloud-download"></i></div>
+        <h4>Private Gallery</h4>
+        <p>Every client gets a password-protected online gallery with full-resolution downloads and sharing links.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="bi bi-heart"></i></div>
+        <h4>Personal Touch</h4>
+        <p>We spend time with you before the shoot to understand your story — so the images feel genuinely yours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED WORK -->
+<section class="featured-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="sec-eye" style="color:var(--rose-lt)">Featured Work</span>
+      <h2 class="sec-title" style="color:#fff">Selected <em style="color:var(--rose-lt)">Frames</em></h2>
+      <div class="sec-bar"></div>
+    </div>
+    <div class="featured-grid reveal">
+      <div class="feat-item">
+        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80" alt="Wedding"/>
+        <div class="feat-overlay"><div class="feat-overlay-text"><strong>Golden Vows</strong><span>Wedding · Jaipur Palace</span></div></div>
+      </div>
+      <div class="feat-item">
+        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&q=80" alt="Fashion"/>
+        <div class="feat-overlay"><div class="feat-overlay-text"><strong>Silhouette</strong><span>Fashion Editorial</span></div></div>
+      </div>
+      <div class="feat-item">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80" alt="Event"/>
+        <div class="feat-overlay"><div class="feat-overlay-text"><strong>Summit 2024</strong><span>Corporate Event</span></div></div>
+      </div>
+      <div class="feat-item">
+        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&q=80" alt="Fashion"/>
+        <div class="feat-overlay"><div class="feat-overlay-text"><strong>Urban Grace</strong><span>Street Editorial</span></div></div>
+      </div>
+      <div class="feat-item">
+        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=600&q=80" alt="Bridal"/>
+        <div class="feat-overlay"><div class="feat-overlay-text"><strong>Bridal Bliss</strong><span>Wedding Portrait</span></div></div>
+      </div>
+    </div>
+    <div class="view-all-wrap reveal">
+      <a href="portfolio.html" class="btn-rose">View Full Portfolio</a>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTERS -->
+<section class="counters-section">
+  <div class="container">
+    <div class="counters-grid">
+      <div class="counter-box reveal"><div class="counter-num">350<span>+</span></div><div class="counter-lbl">Weddings Shot</div></div>
+      <div class="counter-box reveal"><div class="counter-num">80<span>+</span></div><div class="counter-lbl">Fashion Campaigns</div></div>
+      <div class="counter-box reveal"><div class="counter-num">8<span>yr</span></div><div class="counter-lbl">Years Active</div></div>
+      <div class="counter-box reveal"><div class="counter-num">99<span>%</span></div><div class="counter-lbl">Happy Clients</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testi-strip">
+  <div class="container">
+    <div class="testi-slide" id="testiSlide">
+      <div class="testi-quote-icon"><i class="bi bi-quote"></i></div>
+      <p class="testi-text" id="testiText">"Aryan captured every emotion of our wedding with such artistry. The photographs are breathtaking — we relive that day every time we look at the album."</p>
+      <div class="testi-author-wrap">
+        <div class="testi-avatar"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&q=80" alt=""/></div>
+        <div><div class="testi-name" id="testiName">Priya & Rohit Sharma</div><div class="testi-role-txt" id="testiRole">Wedding Client · Jaipur</div></div>
+      </div>
+      <div class="testi-dots">
+        <button class="testi-dot active" data-i="0"></button>
+        <button class="testi-dot" data-i="1"></button>
+        <button class="testi-dot" data-i="2"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG PREVIEW -->
+<section class="section-pad">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="sec-eye">From the Blog</span>
+      <h2 class="sec-title">Stories & <em>Insights</em></h2>
+      <div class="sec-bar"></div>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card reveal">
+        <div class="blog-img"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80" alt=""/></div>
+        <div class="blog-body">
+          <span class="blog-cat">Wedding</span>
+          <h4>10 Poses Every Couple Should Try on Their Wedding Day</h4>
+          <p>From candid moments to classic portraits, these timeless poses bring out authentic emotion.</p>
+          <a href="#" class="blog-link">Read More <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="blog-card reveal">
+        <div class="blog-img"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80" alt=""/></div>
+        <div class="blog-body">
+          <span class="blog-cat">Fashion</span>
+          <h4>How to Brief Your Photographer for a Fashion Shoot</h4>
+          <p>A great mood board and clear references make the difference between good and iconic.</p>
+          <a href="#" class="blog-link">Read More <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="blog-card reveal">
+        <div class="blog-img"><img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=600&q=80" alt=""/></div>
+        <div class="blog-body">
+          <span class="blog-cat">Events</span>
+          <h4>Why Your Corporate Event Needs a Professional Photographer</h4>
+          <p>First impressions live forever online — here's how great event photography builds your brand.</p>
+          <a href="#" class="blog-link">Read More <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-brand">Aryan<span>Visuals</span></div>
+        <p class="footer-desc">Timeless photography for weddings, fashion and events across India.</p>
+        <div class="footer-socials">
+          <a href="#" class="fsoc"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="fsoc"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="fsoc"><i class="bi bi-youtube"></i></a>
+          <a href="#" class="fsoc"><i class="bi bi-pinterest"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h6>Pages</h6>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Services</h6>
+        <ul>
+          <li><a href="services.html">Wedding</a></li>
+          <li><a href="services.html">Fashion</a></li>
+          <li><a href="services.html">Events</a></li>
+          <li><a href="services.html">Corporate</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Contact</h6>
+        <ul>
+          <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+          <li><a href="mailto:hello@aryanvisuals.in">hello@aryanvisuals.in</a></li>
+          <li><a href="#">Studio, C-Scheme, Jaipur</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 AryanVisuals. All rights reserved.</span>
+      <span>Made with <i class="bi bi-heart-fill" style="color:var(--rose-lt)"></i> in Jaipur</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/919876543210" target="_blank" class="wa-fab"><i class="bi bi-whatsapp"></i></a>
+
+<script>
+// Navbar scroll
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>60),{passive:true});
+
+// Hamburger
+const ham=document.getElementById('ham'),menu=document.getElementById('mobileMenu'),close=document.getElementById('mobileClose');
+ham.onclick=()=>menu.classList.add('open');
+close.onclick=()=>menu.classList.remove('open');
+function closeMobile(){menu.classList.remove('open')}
+
+// Reveal on scroll
+const reveals=document.querySelectorAll('.reveal');
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:.15});
+reveals.forEach(r=>ro.observe(r));
+
+// Testimonials
+const testimonials=[
+  {text:'"Aryan captured every emotion of our wedding with such artistry. The photographs are breathtaking — we relive that day every time we look at the album."',name:'Priya & Rohit Sharma',role:'Wedding Client · Jaipur'},
+  {text:'"The fashion editorial he shot for our brand tripled our Instagram engagement. His eye for light is unlike anyone else we\'ve worked with."',name:'Neha Kapoor',role:'Creative Director · KAUR Label'},
+  {text:'"Our annual summit looked premium in every frame. Clean editing, on-time delivery, and an incredibly professional team."',name:'Vikram Mehta',role:'CEO · TechSphere India'},
+];
+let ti=0;
+const dots=document.querySelectorAll('.testi-dot');
+dots.forEach(d=>d.addEventListener('click',()=>setTesti(+d.dataset.i)));
+function setTesti(i){
+  ti=i;
+  document.getElementById('testiText').textContent=testimonials[i].text;
+  document.getElementById('testiName').textContent=testimonials[i].name;
+  document.getElementById('testiRole').textContent=testimonials[i].role;
+  dots.forEach((d,j)=>d.classList.toggle('active',j===i));
+}
+setInterval(()=>setTesti((ti+1)%3),5000);
+</script>
+</body>
+</html>
