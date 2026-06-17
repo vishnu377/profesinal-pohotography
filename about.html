@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>About — AryanVisuals</title>
+
+
+<link rel="stylesheet" href="./css/Style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+<style>
+.page-hero{padding:160px 0 80px;background:var(--grad);text-align:center;position:relative}
+.page-hero h1{font-size:clamp(2.8rem,6vw,4.8rem);color:#fff;font-weight:700;margin-bottom:14px}
+.page-hero p{color:rgba(255,255,255,.65);max-width:480px;margin:0 auto}
+.breadcrumb-bar{display:flex;justify-content:center;gap:8px;margin-top:20px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.breadcrumb-bar a{color:rgba(255,255,255,.5)}.breadcrumb-bar a:hover{color:var(--rose-lt)}
+.breadcrumb-bar span{color:var(--rose-lt)}
+
+/* About main */
+.about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:70px;align-items:center}
+.about-img-col{position:relative}
+.about-main-img{width:100%;object-fit:cover;display:block}
+.about-accent-box{
+  position:absolute;bottom:-24px;right:-24px;
+  width:160px;height:160px;
+  border:2px solid var(--rose);z-index:-1;
+}
+.about-float-stat{
+  position:absolute;top:32px;left:-28px;
+  background:var(--violet);color:#fff;
+  padding:18px 22px;box-shadow:0 12px 36px rgba(45,27,105,.3);
+}
+.float-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;line-height:1;color:#fff}
+.float-num span{color:var(--rose-lt)}
+.float-lbl{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.about-text h2{font-size:clamp(2rem,3.5vw,3rem);margin-bottom:16px;color:var(--ink)}
+.about-text h2 em{color:var(--violet2);font-style:italic}
+.about-para{color:var(--muted);line-height:1.85;margin-bottom:16px;font-size:.93rem}
+.about-sig{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:2rem;color:var(--violet2);
+  border-top:1px solid var(--border);padding-top:18px;margin-top:24px;
+}
+
+/* Stats band */
+.stats-band{background:var(--champagne);padding:70px 0}
+.stats-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.stat-box{text-align:center;padding:28px 16px}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3.4rem;font-weight:700;color:var(--violet);line-height:1;margin-bottom:6px;
+}
+.stat-num span{color:var(--rose)}
+.stat-lbl{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+
+/* Skills */
+.skills-section{background:var(--violet);padding:100px 0}
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:50px}
+.skill-item{margin-bottom:22px}
+.skill-row{display:flex;justify-content:space-between;margin-bottom:8px;font-size:.8rem;color:rgba(255,255,255,.75)}
+.skill-track{height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
+.skill-fill{height:100%;background:linear-gradient(90deg,var(--rose),var(--rose-lt));border-radius:2px;width:0;transition:width 1.4s ease}
+.gear-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.gear-card{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+  padding:20px;display:flex;gap:14px;align-items:flex-start;
+  transition:border-color .25s;
+}
+.gear-card:hover{border-color:var(--rose-lt)}
+.gear-icon{font-size:1.3rem;color:var(--rose-lt);flex-shrink:0;margin-top:2px}
+.gear-name{color:#fff;font-weight:600;font-size:.85rem;margin-bottom:2px}
+.gear-desc{color:rgba(255,255,255,.45);font-size:.75rem;line-height:1.5}
+
+/* Awards */
+.awards-section{padding:100px 0}
+.awards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px}
+.award-card{
+  padding:32px 28px;border:1px solid var(--border);
+  display:flex;gap:18px;align-items:flex-start;
+  transition:transform .3s,box-shadow .3s;
+}
+.award-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(45,27,105,.1)}
+.award-icon{
+  width:48px;height:48px;border-radius:50%;
+  background:linear-gradient(135deg,rgba(45,27,105,.1),rgba(200,131,122,.15));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;color:var(--violet2);flex-shrink:0;
+}
+.award-year{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--rose);margin-bottom:4px}
+.award-title{font-size:1rem;color:var(--ink);margin-bottom:4px;font-family:'Cormorant Garamond',serif;font-weight:600}
+.award-org{font-size:.78rem;color:var(--muted)}
+
+/* Team */
+.team-section{background:var(--champagne);padding:100px 0}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:50px}
+.team-card{background:var(--white);overflow:hidden;transition:box-shadow .3s}
+.team-card:hover{box-shadow:0 20px 50px rgba(45,27,105,.12)}
+.team-img{height:280px;overflow:hidden}
+.team-img img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s}
+.team-card:hover .team-img img{transform:scale(1.05)}
+.team-info{padding:24px 22px}
+.team-name{font-size:1.25rem;color:var(--ink);margin-bottom:4px}
+.team-role{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rose);margin-bottom:10px;display:block}
+.team-bio{font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.team-soc{display:flex;gap:8px}
+.tsoc{
+  width:32px;height:32px;border:1px solid var(--border);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:.85rem;transition:all .25s;
+}
+.tsoc:hover{background:var(--violet);color:#fff;border-color:var(--violet)}
+
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr}
+  .about-float-stat{display:none}
+  .stats-inner,.awards-grid,.team-grid{grid-template-columns:1fr 1fr}
+  .skills-grid{grid-template-columns:1fr}
+}
+@media(max-width:580px){
+  .stats-inner,.awards-grid,.team-grid{grid-template-columns:1fr}
+  .gear-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav class="nav-wrap solid">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Aryan<span>Visuals</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li><li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+    </ul>
+    <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose"><i class="bi bi-x-lg"></i></button>
+  <a href="index.html">Home</a><a href="portfolio.html">Portfolio</a>
+  <a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>The <em style="color:var(--rose-lt);font-style:italic">Story</em> Behind the Lens</h1>
+    <p>Passion-driven photography built on 8 years of trust and storytelling.</p>
+    <div class="breadcrumb-bar"><a href="index.html">Home</a><span>/</span><span>About</span></div>
+  </div>
+</div>
+
+<!-- ABOUT MAIN -->
+<section class="section-pad">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-col reveal">
+        <div class="about-float-stat">
+          <div class="float-num">8<span>+</span></div>
+          <div class="float-lbl">Years of Craft</div>
+        </div>
+        <img class="about-main-img" src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=700&q=80" alt="Aryan Sharma"/>
+        <div class="about-accent-box"></div>
+      </div>
+      <div class="about-text reveal">
+        <span class="sec-eye">The Artist</span>
+        <h2>Hello, I'm <em>Aryan Sharma</em></h2>
+        <div class="sec-bar left"></div>
+        <p class="about-para">
+          Born in Jaipur and raised surrounded by the vivid colors of Rajasthan's festivals, I discovered photography at seventeen with a borrowed film camera and an instinct that never left. Today, AryanVisuals is a boutique studio trusted by families, designers, and Fortune 500 companies alike.
+        </p>
+        <p class="about-para">
+          I hold a post-graduate degree in Visual Arts from NID Ahmedabad and have trained under photographers in Milan and Tokyo. But the most important lessons came from standing inside the most intimate moments of people's lives — and learning to be invisible while capturing everything.
+        </p>
+        <p class="about-para">
+          Every frame I make begins with a single question: <em>what does this moment feel like?</em> That feeling — not the technical perfection — is what I chase.
+        </p>
+        <div class="about-sig">Aryan Sharma</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat-box reveal"><div class="stat-num">350<span>+</span></div><div class="stat-lbl">Weddings</div></div>
+      <div class="stat-box reveal"><div class="stat-num">80<span>+</span></div><div class="stat-lbl">Campaigns</div></div>
+      <div class="stat-box reveal"><div class="stat-num">200<span>+</span></div><div class="stat-lbl">Events</div></div>
+      <div class="stat-box reveal"><div class="stat-num">99<span>%</span></div><div class="stat-lbl">Happy Clients</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS & GEAR -->
+<section class="skills-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="sec-eye" style="color:var(--rose-lt)">Expertise</span>
+      <h2 class="sec-title" style="color:#fff">Skills & <em style="color:var(--rose-lt)">Gear</em></h2>
+      <div class="sec-bar"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="reveal">
+        <div class="skill-item">
+          <div class="skill-row"><span>Wedding Photography</span><span>97%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-w="97"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span>Fashion Editorial</span><span>94%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-w="94"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span>Event Coverage</span><span>96%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-w="96"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span>Post-Processing / Retouching</span><span>92%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-w="92"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span>Drone Cinematography</span><span>88%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-w="88"></div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="gear-grid">
+          <div class="gear-card"><i class="bi bi-camera2 gear-icon"></i><div><div class="gear-name">Sony A7R V</div><div class="gear-desc">61MP full-frame mirrorless, primary body</div></div></div>
+          <div class="gear-card"><i class="bi bi-camera gear-icon"></i><div><div class="gear-name">Fuji GFX 100S</div><div class="gear-desc">102MP medium format for fashion work</div></div></div>
+          <div class="gear-card"><i class="bi bi-circle gear-icon"></i><div><div class="gear-name">Prime Lenses</div><div class="gear-desc">35mm, 50mm, 85mm, 135mm f/1.4 & f/1.8</div></div></div>
+          <div class="gear-card"><i class="bi bi-send gear-icon"></i><div><div class="gear-name">DJI Mavic 3 Pro</div><div class="gear-desc">Hasselblad sensor drone for aerials</div></div></div>
+          <div class="gear-card"><i class="bi bi-lightbulb gear-icon"></i><div><div class="gear-name">Profoto B10+</div><div class="gear-desc">Studio & location strobe lighting</div></div></div>
+          <div class="gear-card"><i class="bi bi-pc-display gear-icon"></i><div><div class="gear-name">Mac Studio</div><div class="gear-desc">Lightroom + Capture One + Photoshop</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="awards-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="sec-eye">Recognition</span>
+      <h2 class="sec-title">Awards & <em>Features</em></h2>
+      <div class="sec-bar"></div>
+    </div>
+    <div class="awards-grid">
+      <div class="award-card reveal">
+        <div class="award-icon"><i class="bi bi-trophy"></i></div>
+        <div><div class="award-year">2024</div><div class="award-title">Best Wedding Photographer</div><div class="award-org">Wedding Sutra Awards · North India</div></div>
+      </div>
+      <div class="award-card reveal">
+        <div class="award-icon"><i class="bi bi-star"></i></div>
+        <div><div class="award-year">2023</div><div class="award-title">Top 10 Fashion Photographers</div><div class="award-org">Vogue India Digital Feature</div></div>
+      </div>
+      <div class="award-card reveal">
+        <div class="award-icon"><i class="bi bi-award"></i></div>
+        <div><div class="award-year">2023</div><div class="award-title">Excellence in Visual Arts</div><div class="award-org">Rajasthan Tourism Board</div></div>
+      </div>
+      <div class="award-card reveal">
+        <div class="award-icon"><i class="bi bi-camera"></i></div>
+        <div><div class="award-year">2022</div><div class="award-title">Featured Photographer</div><div class="award-org">National Geographic Traveller India</div></div>
+      </div>
+      <div class="award-card reveal">
+        <div class="award-icon"><i class="bi bi-gem"></i></div>
+        <div><div class="award-year">2021</div><div class="award-title">Best Destination Wedding</div><div class="award-org">The Knot Global Awards</div></div>
+      </div>
+      <div class="award-card reveal">
+        <div class="award-icon"><i class="bi bi-heart"></i></div>
+        <div><div class="award-year">2020</div><div class="award-title">Rising Talent Award</div><div class="award-org">Photography Guild of India</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="sec-eye">The Team</span>
+      <h2 class="sec-title">Meet the <em>Crew</em></h2>
+      <div class="sec-bar"></div>
+      <p class="sec-sub mx">Small by choice. Expert by commitment. Every shoot is led personally by a senior photographer.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-img"><img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=500&q=80" alt="Aryan"/></div>
+        <div class="team-info">
+          <h4 class="team-name">Aryan Sharma</h4>
+          <span class="team-role">Lead Photographer & Founder</span>
+          <p class="team-bio">Specialising in weddings and fashion, Aryan brings 8 years of artistic vision to every frame.</p>
+          <div class="team-soc">
+            <a href="#" class="tsoc"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="tsoc"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-img"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&q=80" alt="Riya"/></div>
+        <div class="team-info">
+          <h4 class="team-name">Riya Mehta</h4>
+          <span class="team-role">Senior Photographer</span>
+          <p class="team-bio">Riya leads our events and corporate coverage with a sharp eye for decisive moments.</p>
+          <div class="team-soc">
+            <a href="#" class="tsoc"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="tsoc"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-img"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500&q=80" alt="Karan"/></div>
+        <div class="team-info">
+          <h4 class="team-name">Karan Joshi</h4>
+          <span class="team-role">Retouching & Post-Production</span>
+          <p class="team-bio">Karan transforms raw captures into polished masterpieces with his expert colour grading.</p>
+          <div class="team-soc">
+            <a href="#" class="tsoc"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="tsoc"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-brand">Aryan<span>Visuals</span></div>
+        <p class="footer-desc">Timeless photography across India.</p>
+        <div class="footer-socials">
+          <a href="#" class="fsoc"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="fsoc"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="fsoc"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col"><h6>Pages</h6><ul>
+        <li><a href="index.html">Home</a></li><li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h6>Services</h6><ul>
+        <li><a href="services.html">Wedding</a></li><li><a href="services.html">Fashion</a></li><li><a href="services.html">Events</a></li>
+      </ul></div>
+      <div class="footer-col"><h6>Contact</h6><ul>
+        <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+        <li><a href="mailto:hello@aryanvisuals.in">hello@aryanvisuals.in</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 AryanVisuals.</span></div>
+  </div>
+</footer>
+<a href="https://wa.me/919876543210" target="_blank" class="wa-fab"><i class="bi bi-whatsapp"></i></a>
+
+<script>
+document.getElementById('ham').onclick=()=>document.getElementById('mobileMenu').classList.add('open');
+document.getElementById('mobileClose').onclick=()=>document.getElementById('mobileMenu').classList.remove('open');
+
+// Skill bars on scroll
+const fills=document.querySelectorAll('.skill-fill');
+const sf=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.style.width=e.target.dataset.w+'%';sf.unobserve(e.target)}});
+},{threshold:.3});
+fills.forEach(f=>sf.observe(f));
+
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(r=>ro.observe(r));
+</script>
+</body>
+</html>

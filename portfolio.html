@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Portfolio — AryanVisuals</title>
+
+
+<link rel="stylesheet" href="./css/Style.css"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+<style>
+.page-hero{
+  padding:160px 0 80px;
+  background:var(--grad);
+  text-align:center;position:relative;overflow:hidden;
+}
+.page-hero::after{
+  content:'';position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1800&q=80') center/cover;
+  opacity:.08;
+}
+.page-hero .container{position:relative;z-index:1}
+.page-hero h1{
+  font-size:clamp(2.8rem,6vw,4.8rem);color:#fff;font-weight:700;margin-bottom:14px;
+}
+.page-hero p{color:rgba(255,255,255,.65);font-size:1rem;max-width:480px;margin:0 auto}
+.breadcrumb-bar{display:flex;justify-content:center;gap:8px;margin-top:20px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.breadcrumb-bar a{color:rgba(255,255,255,.5);transition:color .2s}
+.breadcrumb-bar a:hover{color:var(--rose-lt)}
+.breadcrumb-bar span{color:var(--rose-lt)}
+
+/* Filter */
+.filter-row{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:50px 0 36px}
+.filt{
+  background:transparent;border:1.5px solid var(--border);
+  color:var(--muted);font-family:'DM Sans',sans-serif;
+  font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  padding:9px 24px;cursor:pointer;border-radius:100px;
+  transition:all .25s;
+}
+.filt:hover,.filt.active{
+  background:var(--violet);border-color:var(--violet);color:#fff;
+  box-shadow:0 6px 20px rgba(45,27,105,.25);
+}
+
+/* Masonry */
+.msnry{columns:3;column-gap:18px}
+.msnry-item{
+  break-inside:avoid;margin-bottom:18px;
+  overflow:hidden;position:relative;cursor:pointer;
+  transition:opacity .4s,transform .4s;
+}
+.msnry-item img{
+  width:100%;display:block;
+  transition:transform .55s cubic-bezier(.25,.46,.45,.94);
+}
+.msnry-item:hover img{transform:scale(1.07)}
+.msnry-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(45,27,105,.85) 0%,transparent 50%);
+  opacity:0;transition:opacity .35s;
+  display:flex;align-items:flex-end;padding:22px;
+}
+.msnry-item:hover .msnry-overlay{opacity:1}
+.msnry-tag{
+  display:inline-block;
+  background:var(--rose);color:#fff;
+  font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:4px 12px;margin-bottom:8px;
+}
+.msnry-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:#fff;display:block;font-weight:600}
+.msnry-sub{font-size:.72rem;color:rgba(255,255,255,.65)}
+.msnry-item.hidden{display:none}
+
+/* Lightbox */
+.lightbox{
+  position:fixed;inset:0;background:rgba(10,5,25,.95);
+  z-index:9998;display:none;align-items:center;justify-content:center;
+  padding:20px;
+}
+.lightbox.open{display:flex}
+.lb-img{max-width:90vw;max-height:88vh;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb-close{
+  position:absolute;top:20px;right:24px;
+  background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;
+  opacity:.7;transition:opacity .2s;
+}
+.lb-close:hover{opacity:1}
+.lb-prev,.lb-next{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  color:#fff;font-size:1.4rem;width:48px;height:48px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;border-radius:50%;transition:background .25s;
+}
+.lb-prev:hover,.lb-next:hover{background:var(--rose)}
+.lb-prev{left:20px}
+.lb-next{right:20px}
+
+@media(max-width:900px){.msnry{columns:2}}
+@media(max-width:580px){.msnry{columns:1}}
+</style>
+</head>
+<body>
+<nav class="nav-wrap solid" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Aryan<span>Visuals</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html" class="active">Portfolio</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+    </ul>
+    <div class="hamburger" id="ham"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose"><i class="bi bi-x-lg"></i></button>
+  <a href="index.html">Home</a><a href="portfolio.html">Portfolio</a>
+  <a href="services.html">Services</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <h1>Our <em style="color:var(--rose-lt);font-style:italic">Portfolio</em></h1>
+    <p>A curated collection of moments, moods, and memories.</p>
+    <div class="breadcrumb-bar"><a href="index.html">Home</a><span>/</span><span>Portfolio</span></div>
+  </div>
+</div>
+
+<section class="section-pad">
+  <div class="container">
+    <div class="filter-row">
+      <button class="filt active" data-filter="all">All Work</button>
+      <button class="filt" data-filter="wedding">Wedding</button>
+      <button class="filt" data-filter="fashion">Fashion</button>
+      <button class="filt" data-filter="events">Events</button>
+      <button class="filt" data-filter="prewedding">Pre-Wedding</button>
+    </div>
+
+    <div class="msnry" id="grid">
+      <div class="msnry-item" data-cat="wedding">
+        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=700&q=80" alt="Wedding"/>
+        <div class="msnry-overlay"><div><span class="msnry-tag">Wedding</span><span class="msnry-title">Golden Vows</span><span class="msnry-sub">Jaipur Palace · 2024</span></div></div>
+      </div>
+      <div class="msnry-item" data-cat="fashion">
+        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=700&q=80" alt="Fashion"/>
+        <div class="msnry-overlay"><div><span class="msnry-tag">Fashion</span><span class="msnry-title">Silhouette</span><span class="msnry-sub">Editorial Campaign</span></div></div>
+      </div>
+      <div class="msnry-item" data-cat="events">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80" alt="Events"/>
+        <div class="msnry-overlay"><div><span class="msnry-tag">Events</span><span class="msnry-title">Summit 2024</span><span class="msnry-sub">Corporate · Delhi</span></div></div>
+      </div>
+      <div class="msnry-item" data-cat="prewedding">
+        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=700&q=80" alt="Pre-Wedding"/>
+        <div class="msnry-overlay"><div><span class="msnry-tag">Pre-Wedding</span><span class="msnry-title">Love at Dusk</span><span class="msnry-sub">Udaipur Lake · 2024</span></div></div>
+      </div>
+      <div class="msnry-item" data-cat="fashion">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700&q=80" alt="Fashion"/>
+        <div class="msnry-overlay"><div><span class="msnry-tag">Fashion</span><span class="msnry-title">Monochrome</span><span class="msnry-sub">High Fashion</span></div></div>
+      </div>
+      <div class="msnry-item" data-cat="wedding">
+        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=700&q=80" alt="Bridal"/>
+        <div class="msnry-overlay"><div><span class="msnry-tag">Wedding</span><span class="msnry-title">Bridal Bliss</span><span class="msnry-sub">Portrait Session</span></div></div>
+      </div>
+      <div class="msnry-item" data-cat="events">
+        <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=700&q=80" alt="Concert"/>
+        <div class="msnry-overlay"><div><span class="msnry-tag">Events</span><span class="msnry-title">Rhythm & Light</span><span class="msnry-sub">Concert Coverage</span></div></div>
+      </div>
+      <div class="msnry-item" data-cat="fashion">
+        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=700&q=80" alt="Street Fashion"/>
+        <div class="msnry-overlay"><div><span class="msnry-tag">Fashion</span><span class="msnry-title">Urban Grace</span><span class="msnry-sub">Street Editorial</span></div></div>
+      </div>
+      <div class="msnry-item" data-cat="prewedding">
+        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=700&q=80" alt="Pre-Wedding"/>
+        <div class="msnry-overlay"><div><span class="msnry-tag">Pre-Wedding</span><span class="msnry-title">Desert Romance</span><span class="msnry-sub">Jaisalmer · 2024</span></div></div>
+      </div>
+      <div class="msnry-item" data-cat="wedding">
+        <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=700&q=80" alt="Wedding Ceremony"/>
+        <div class="msnry-overlay"><div><span class="msnry-tag">Wedding</span><span class="msnry-title">Sacred Ties</span><span class="msnry-sub">Traditional · Jaipur</span></div></div>
+      </div>
+      <div class="msnry-item" data-cat="events">
+        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=700&q=80" alt="Gala"/>
+        <div class="msnry-overlay"><div><span class="msnry-tag">Events</span><span class="msnry-title">Royal Gala</span><span class="msnry-sub">Social Event</span></div></div>
+      </div>
+      <div class="msnry-item" data-cat="fashion">
+        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=700&q=80" alt="Couture"/>
+        <div class="msnry-overlay"><div><span class="msnry-tag">Fashion</span><span class="msnry-title">Couture Dreams</span><span class="msnry-sub">Luxury Campaign</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lb">
+  <button class="lb-close" id="lbClose"><i class="bi bi-x-lg"></i></button>
+  <button class="lb-prev" id="lbPrev"><i class="bi bi-chevron-left"></i></button>
+  <img class="lb-img" id="lbImg" src="" alt=""/>
+  <button class="lb-next" id="lbNext"><i class="bi bi-chevron-right"></i></button>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-brand">Aryan<span>Visuals</span></div>
+        <p class="footer-desc">Timeless photography across India.</p>
+        <div class="footer-socials">
+          <a href="#" class="fsoc"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="fsoc"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="fsoc"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col"><h6>Pages</h6><ul>
+        <li><a href="index.html">Home</a></li><li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h6>Services</h6><ul>
+        <li><a href="services.html">Wedding</a></li><li><a href="services.html">Fashion</a></li>
+        <li><a href="services.html">Events</a></li></ul></div>
+      <div class="footer-col"><h6>Contact</h6><ul>
+        <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+        <li><a href="mailto:hello@aryanvisuals.in">hello@aryanvisuals.in</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2025 AryanVisuals.</span></div>
+  </div>
+</footer>
+<a href="https://wa.me/919876543210" target="_blank" class="wa-fab"><i class="bi bi-whatsapp"></i></a>
+
+<script>
+const nav=document.getElementById('navbar');
+// Navbar already solid on this page
+
+// Mobile menu
+document.getElementById('ham').onclick=()=>document.getElementById('mobileMenu').classList.add('open');
+document.getElementById('mobileClose').onclick=()=>document.getElementById('mobileMenu').classList.remove('open');
+
+// Filter
+const filts=document.querySelectorAll('.filt'),items=document.querySelectorAll('.msnry-item');
+filts.forEach(b=>b.addEventListener('click',()=>{
+  filts.forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  const f=b.dataset.filter;
+  items.forEach(i=>{
+    const show=f==='all'||i.dataset.cat===f;
+    i.classList.toggle('hidden',!show);
+  });
+}));
+
+// Lightbox
+const imgs=[...document.querySelectorAll('.msnry-item img')];
+let cur=0;
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg');
+document.querySelectorAll('.msnry-item').forEach((el,i)=>{
+  el.addEventListener('click',()=>{cur=i;lbImg.src=imgs[i].src;lb.classList.add('open')});
+});
+document.getElementById('lbClose').onclick=()=>lb.classList.remove('open');
+document.getElementById('lbPrev').onclick=()=>{cur=(cur-1+imgs.length)%imgs.length;lbImg.src=imgs[cur].src};
+document.getElementById('lbNext').onclick=()=>{cur=(cur+1)%imgs.length;lbImg.src=imgs[cur].src};
+lb.addEventListener('click',e=>{if(e.target===lb)lb.classList.remove('open')});
+
+// Reveal
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(r=>ro.observe(r));
+</script>
+</body>
+</html>

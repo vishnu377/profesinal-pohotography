@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Aryan Sharma — Photography & Visual Stories</title>
+<meta name="description" content="Aryan Sharma is a Jaipur-based photographer specialising in weddings, fashion editorials, and brand events."/>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+
+<style>
+:root{
+  --ink:#121212;
+  --paper:#ffffff;
+  --grey:#7a7a7a;
+  --grey-lt:#aaaaaa;
+  --line:#e9e9e9;
+  --wash:#fafafa;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  font-weight:300;
+  color:var(--ink);
+  background:var(--paper);
+  font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:500;line-height:1.15}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{max-width:1180px;margin:0 auto;padding:0 32px}
+.italic{font-style:italic;font-weight:400;color:var(--grey)}
+
+/* ── NAV ── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:30px 0;
+  transition:background .4s ease,padding .4s ease,box-shadow .4s ease;
+}
+.nav.solid{background:rgba(255,255,255,.97);backdrop-filter:blur(8px);padding:18px 0;box-shadow:0 1px 0 var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Playfair Display',serif;font-size:1.3rem;letter-spacing:.03em;color:#fff;transition:color .4s}
+.nav.solid .logo{color:var(--ink)}
+.nav-links{display:flex;gap:38px;list-style:none}
+.nav-links a{
+  font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#fff;
+  position:relative;padding-bottom:4px;transition:color .4s,opacity .25s;
+}
+.nav.solid .nav-links a{color:var(--ink)}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:currentColor;transition:width .25s}
+.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:22px}
+.nav-insta{font-size:1rem;color:#fff;transition:color .4s,opacity .25s}
+.nav.solid .nav-insta{color:var(--ink)}
+.nav-insta:hover{opacity:.55}
+.menu-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer}
+.menu-btn span{width:22px;height:1px;background:#fff;transition:.3s}
+.nav.solid .menu-btn span{background:var(--ink)}
+
+.mnav{position:fixed;inset:0;background:#fff;z-index:1100;display:none;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+.mnav.open{display:flex}
+.mnav a{font-family:'Playfair Display',serif;font-size:1.9rem}
+.mnav-close{position:absolute;top:26px;right:30px;background:none;border:none;font-size:1.7rem;cursor:pointer}
+
+/* ── HERO ── */
+.hero{height:100vh;min-height:620px;position:relative;display:flex;align-items:center;overflow:hidden;background:#0c0c0c}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80') center 30%/cover no-repeat}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4) 0%,rgba(0,0,0,.18) 40%,rgba(0,0,0,.6) 100%)}
+.hero-content{position:relative;z-index:2;width:100%;text-align:center;color:#fff}
+.hero-eyebrow{font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-bottom:24px;display:block}
+.hero h1{font-size:clamp(2.6rem,7.5vw,5.6rem);letter-spacing:.01em}
+.hero-sub{margin-top:22px;font-size:.95rem;color:rgba(255,255,255,.72);letter-spacing:.03em}
+.hero-scroll{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.55);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px}
+.hero-scroll .ln{width:1px;height:36px;background:rgba(255,255,255,.4);animation:pulse 2.2s infinite}
+@keyframes pulse{0%,100%{opacity:.25}50%{opacity:1}}
+
+/* ── MARQUEE ── */
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;overflow:hidden}
+.mtrack{display:flex;gap:52px;width:max-content;animation:marquee 26s linear infinite}
+.mtrack span{font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem;color:var(--grey-lt);white-space:nowrap;display:flex;align-items:center;gap:20px}
+.mtrack span i{font-size:.4rem;color:var(--line)}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── SECTION HEAD ── */
+.shead{text-align:center;margin-bottom:64px}
+.eyebrow{font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--grey);margin-bottom:16px;display:block}
+.shead h2{font-size:clamp(2rem,4vw,3rem)}
+
+/* ── ABOUT / STORY ── */
+.story{padding:130px 0}
+.story-grid{display:grid;grid-template-columns:.9fr 1fr;gap:80px;align-items:center}
+.story-img-wrap{position:relative}
+.story-img{aspect-ratio:4/5;overflow:hidden}
+.story-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(6%)}
+.story-float{
+  position:absolute;bottom:-28px;right:-28px;background:var(--ink);color:#fff;
+  padding:26px 30px;text-align:center;min-width:140px;
+}
+.story-float b{font-family:'Playfair Display',serif;font-size:2.2rem;display:block;font-weight:500}
+.story-float span{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.story-text p{color:var(--grey);line-height:1.9;font-size:.93rem;margin-bottom:18px;max-width:480px}
+.story-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:1.3rem;color:var(--ink);margin:28px 0;line-height:1.5}
+.story-stats{display:flex;gap:50px;margin-top:34px;padding-top:30px;border-top:1px solid var(--line)}
+.sstat b{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:500;display:block}
+.sstat span{font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grey)}
+
+/* ── WHY CHOOSE US ── */
+.why{padding:0 0 130px}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:50px}
+.why-item{text-align:center}
+.why-num{font-family:'Playfair Display',serif;font-size:.85rem;letter-spacing:.1em;color:var(--grey-lt);margin-bottom:18px}
+.why-icon{font-size:1.7rem;color:var(--ink);margin-bottom:22px}
+.why-item h4{font-size:1.3rem;margin-bottom:12px}
+.why-item p{color:var(--grey);font-size:.87rem;line-height:1.8;max-width:280px;margin:0 auto}
+
+/* ── SERVICES ── */
+.services{padding:130px 0;background:var(--wash)}
+.svc-list{border-top:1px solid var(--line)}
+.svc-row{
+  display:grid;grid-template-columns:80px 1fr 1fr auto;gap:30px;align-items:center;
+  padding:38px 0;border-bottom:1px solid var(--line);
+  transition:padding-left .35s ease;
+}
+.svc-row:hover{padding-left:14px}
+.svc-no{font-family:'Playfair Display',serif;font-size:.85rem;color:var(--grey-lt)}
+.svc-name{font-size:clamp(1.5rem,2.6vw,2.1rem)}
+.svc-desc{color:var(--grey);font-size:.86rem;line-height:1.7;max-width:380px}
+.svc-arrow{font-size:1.3rem;color:var(--grey-lt);transition:transform .3s,color .3s}
+.svc-row:hover .svc-arrow{transform:translateX(6px);color:var(--ink)}
+@media(max-width:767px){
+  .svc-row{grid-template-columns:1fr;gap:10px;text-align:left}
+  .svc-arrow{display:none}
+}
+
+/* ── PROJECTS / GALLERY ── */
+.work{padding:130px 0}
+.work-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:20px}
+.work-head .shead{margin-bottom:0;text-align:left}
+.work-tabs{display:flex;gap:6px}
+.wtab{background:none;border:1px solid var(--line);font-family:'Inter',sans-serif;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);padding:9px 22px;cursor:pointer;transition:all .25s}
+.wtab:hover,.wtab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.masonry{column-count:3;column-gap:26px}
+.masonry-item{break-inside:avoid;margin-bottom:26px;overflow:hidden;cursor:pointer;position:relative}
+.masonry-item img{width:100%;display:block;transition:transform .6s cubic-bezier(.22,.61,.36,1)}
+.masonry-item:hover img{transform:scale(1.04)}
+.masonry-item.hide{display:none}
+@media(max-width:900px){.masonry{column-count:2;column-gap:16px}.masonry-item{margin-bottom:16px}}
+@media(max-width:575px){.masonry{column-count:1}}
+
+/* ── TEAM ── */
+.team{padding:130px 0;background:var(--wash)}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:36px}
+.team-card{text-align:center}
+.team-img{aspect-ratio:3/4;overflow:hidden;margin-bottom:20px}
+.team-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s;filter:grayscale(15%)}
+.team-card:hover .team-img img{transform:scale(1.04)}
+.team-card h4{font-size:1.15rem;margin-bottom:5px}
+.team-card span{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--grey)}
+@media(max-width:900px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ── TESTIMONIALS ── */
+.testi{padding:130px 0;text-align:center}
+.testi-slide{max-width:740px;margin:0 auto}
+.tmark{font-family:'Playfair Display',serif;font-size:3.4rem;color:var(--line);line-height:1;margin-bottom:6px}
+.ttext{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.3rem,2.6vw,1.85rem);color:var(--ink);line-height:1.55;margin-bottom:26px}
+.tby{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--grey)}
+.tby span{color:var(--grey-lt)}
+.tdots{display:flex;justify-content:center;gap:8px;margin-top:34px}
+.tdot{width:7px;height:7px;border-radius:50%;background:var(--line);border:none;cursor:pointer;transition:.25s}
+.tdot.active{background:var(--ink);width:20px;border-radius:4px}
+
+/* ── INSTAGRAM ── */
+.insta{padding:0 0 130px;text-align:center}
+.insta-handle{display:inline-flex;align-items:center;gap:8px;font-size:.92rem;border-bottom:1px solid var(--ink);padding-bottom:3px;margin-top:4px;transition:opacity .25s}
+.insta-handle:hover{opacity:.5}
+.insta-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:48px}
+.insta-grid a{position:relative;overflow:hidden;aspect-ratio:1/1;display:block}
+.insta-grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s,opacity .3s}
+.insta-grid a:hover img{transform:scale(1.06);opacity:.88}
+.insta-grid a::after{content:'\f436';font-family:'bootstrap-icons';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;opacity:0;transition:opacity .3s;background:rgba(0,0,0,0)}
+.insta-grid a:hover::after{opacity:1;background:rgba(0,0,0,.18)}
+@media(max-width:767px){.insta-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* ── CONTACT ── */
+.contact{background:var(--ink);color:#fff;padding:140px 0;text-align:center}
+.contact .eyebrow{color:rgba(255,255,255,.42)}
+.contact h2{font-size:clamp(2.2rem,5vw,3.6rem);color:#fff;margin-bottom:50px}
+.contact-details{display:flex;justify-content:center;gap:64px;flex-wrap:wrap;margin-bottom:48px}
+.cd-item{text-align:center}
+.cd-label{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:10px;display:block}
+.cd-item a,.cd-item span.cv{font-family:'Playfair Display',serif;font-size:1.25rem;color:#fff;transition:opacity .25s}
+.cd-item a:hover{opacity:.55}
+.btn-wa{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--ink);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;padding:17px 44px;transition:opacity .3s}
+.btn-wa:hover{opacity:.82}
+
+/* ── FOOTER ── */
+footer{padding:34px 0;text-align:center;border-top:1px solid var(--line)}
+footer p{font-size:.7rem;letter-spacing:.05em;color:var(--grey)}
+
+/* ── LIGHTBOX ── */
+.lightbox{position:fixed;inset:0;background:rgba(8,8,8,.96);z-index:2000;display:none;align-items:center;justify-content:center;padding:24px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:88vh;object-fit:contain}
+.lb-x{position:absolute;top:24px;right:28px;color:#fff;background:none;border:none;font-size:1.7rem;cursor:pointer;opacity:.75;transition:.2s}
+.lb-x:hover{opacity:1}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer;opacity:.6;padding:16px;transition:.2s}
+.lb-nav:hover{opacity:1}
+.lb-prev{left:6px}.lb-next{right:6px}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ── RESPONSIVE GLOBAL ── */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .menu-btn{display:flex}
+  .story-grid{grid-template-columns:1fr;gap:48px}
+  .story-float{display:none}
+  .why-grid{grid-template-columns:1fr;gap:44px}
+}
+@media(max-width:600px){
+  .story,.why,.services,.work,.team,.testi,.insta,.contact{padding-top:80px}
+  .why{padding-bottom:80px}
+  .work{padding-bottom:80px}
+  .insta{padding-bottom:80px}
+  .contact{padding-bottom:90px}
+  .story-stats{gap:30px;flex-wrap:wrap}
+  .contact-details{gap:34px}
+  .container{padding:0 22px}
+  .work-head{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="logo">Aryan Sharma</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="https://instagram.com/" target="_blank" class="nav-insta" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+      <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mnav" id="mnav">
+  <button class="mnav-close" id="mnavClose"><i class="bi bi-x"></i></button>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#work">Work</a>
+  <a href="#contact">Contact</a>
+  <a href="https://instagram.com/" target="_blank">Instagram</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-shade"></div>
+  <div class="hero-content container">
+    <span class="hero-eyebrow">Photography Studio · Jaipur</span>
+    <h1>Every frame,<br><span class="italic" style="color:rgba(255,255,255,.85)">a feeling</span></h1>
+    <p class="hero-sub">Wedding · Fashion · Brand Events</p>
+  </div>
+  <div class="hero-scroll"><div class="ln"></div>Scroll</div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="mtrack">
+    <span>Weddings <i class="bi bi-circle-fill"></i></span>
+    <span>Fashion Editorials <i class="bi bi-circle-fill"></i></span>
+    <span>Brand Films <i class="bi bi-circle-fill"></i></span>
+    <span>Corporate Events <i class="bi bi-circle-fill"></i></span>
+    <span>Pre-Wedding <i class="bi bi-circle-fill"></i></span>
+    <span>Weddings <i class="bi bi-circle-fill"></i></span>
+    <span>Fashion Editorials <i class="bi bi-circle-fill"></i></span>
+    <span>Brand Films <i class="bi bi-circle-fill"></i></span>
+    <span>Corporate Events <i class="bi bi-circle-fill"></i></span>
+    <span>Pre-Wedding <i class="bi bi-circle-fill"></i></span>
+  </div>
+</div>
+
+<!-- STORY / ABOUT -->
+<section class="story container" id="about">
+  <div class="story-grid">
+    <div class="story-img-wrap reveal">
+      <div class="story-img"><img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=700&q=80" alt="Aryan Sharma"/></div>
+      <div class="story-float"><b>8+</b><span>Years Active</span></div>
+    </div>
+    <div class="story-text reveal">
+      <span class="eyebrow">Our Story</span>
+      <h2>A photographer who<br>listens before <span class="italic">shooting</span></h2>
+      <p>I'm Aryan, a Jaipur-based photographer who believes the best photographs happen when people forget the camera is even there. What started as a teenager's curiosity with a borrowed film camera has grown into a decade-long practice spent inside weddings, fashion shoots, and brand stories across India.</p>
+      <p class="story-quote">"We don't just capture moments — we build the trust that lets real ones happen in front of the lens."</p>
+      <div class="story-stats">
+        <div class="sstat"><b>350+</b><span>Weddings Shot</span></div>
+        <div class="sstat"><b>80+</b><span>Brand Campaigns</span></div>
+        <div class="sstat"><b>99%</b><span>Happy Clients</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why container">
+  <div class="shead reveal">
+    <span class="eyebrow">Why Choose Us</span>
+    <h2>What Sets Us <span class="italic">Apart</span></h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-item reveal">
+      <div class="why-icon"><i class="bi bi-eye"></i></div>
+      <h4>An Eye for Detail</h4>
+      <p>Years behind the lens have sharpened an instinct for light, timing, and emotion that can't be taught — only practiced.</p>
+    </div>
+    <div class="why-item reveal">
+      <div class="why-icon"><i class="bi bi-gem"></i></div>
+      <h4>Considered Craft</h4>
+      <p>Every gallery is edited frame by frame, not batch-processed — so the final set feels intentional, not automatic.</p>
+    </div>
+    <div class="why-item reveal">
+      <div class="why-icon"><i class="bi bi-arrow-repeat"></i></div>
+      <h4>Always Evolving</h4>
+      <p>From medium-format film to drone cinematography, the toolkit keeps growing so the work never feels dated.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="shead reveal">
+      <span class="eyebrow">What We Do</span>
+      <h2>Services</h2>
+    </div>
+    <div class="svc-list reveal">
+      <div class="svc-row">
+        <span class="svc-no">01</span>
+        <h3 class="svc-name">Wedding</h3>
+        <p class="svc-desc">From the first ritual to the last dance — full-day coverage that holds onto every real moment.</p>
+        <i class="bi bi-arrow-right svc-arrow"></i>
+      </div>
+      <div class="svc-row">
+        <span class="svc-no">02</span>
+        <h3 class="svc-name">Fashion</h3>
+        <p class="svc-desc">Editorial shoots and lookbooks built around mood, light, and a strong creative point of view.</p>
+        <i class="bi bi-arrow-right svc-arrow"></i>
+      </div>
+      <div class="svc-row">
+        <span class="svc-no">03</span>
+        <h3 class="svc-name">Events</h3>
+        <p class="svc-desc">Corporate summits, launches, and galas — professional coverage that elevates the brand on screen.</p>
+        <i class="bi bi-arrow-right svc-arrow"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work container" id="work">
+  <div class="work-head">
+    <div class="shead reveal">
+      <span class="eyebrow">Selected Work</span>
+      <h2>Recent <span class="italic">Frames</span></h2>
+    </div>
+    <div class="work-tabs reveal">
+      <button class="wtab active" data-f="all">All</button>
+      <button class="wtab" data-f="wedding">Wedding</button>
+      <button class="wtab" data-f="fashion">Fashion</button>
+      <button class="wtab" data-f="events">Events</button>
+    </div>
+  </div>
+  <div class="masonry reveal" id="grid">
+    <div class="masonry-item" data-c="wedding"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80" alt="Wedding"/></div>
+    <div class="masonry-item" data-c="fashion"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=700&q=80" alt="Fashion"/></div>
+    <div class="masonry-item" data-c="events"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80" alt="Events"/></div>
+    <div class="masonry-item" data-c="wedding"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=750&q=80" alt="Wedding"/></div>
+    <div class="masonry-item" data-c="fashion"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=700&q=80" alt="Fashion"/></div>
+    <div class="masonry-item" data-c="wedding"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=700&q=80" alt="Wedding"/></div>
+    <div class="masonry-item" data-c="events"><img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&q=80" alt="Events"/></div>
+    <div class="masonry-item" data-c="fashion"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=700&q=80" alt="Fashion"/></div>
+    <div class="masonry-item" data-c="events"><img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=700&q=80" alt="Events"/></div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="container">
+    <div class="shead reveal">
+      <span class="eyebrow">The Team</span>
+      <h2>Behind the <span class="italic">Lens</span></h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-img"><img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=500&q=80" alt="Aryan"/></div>
+        <h4>Aryan Sharma</h4><span>Founder & Lead Photographer</span>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-img"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&q=80" alt="Riya"/></div>
+        <h4>Riya Mehta</h4><span>Senior Photographer</span>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-img"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500&q=80" alt="Karan"/></div>
+        <h4>Karan Joshi</h4><span>Post-Production</span>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-img"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&q=80" alt="Divya"/></div>
+        <h4>Divya Rao</h4><span>Production Manager</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi container">
+  <div class="shead reveal">
+    <span class="eyebrow">Testimonials</span>
+    <h2>What Clients <span class="italic">Say</span></h2>
+  </div>
+  <div class="testi-slide reveal">
+    <div class="tmark">"</div>
+    <p class="ttext" id="ttext">Aryan captured every emotion of our wedding with such artistry. We relive that day every time we look at the album.</p>
+    <p class="tby" id="tby">Priya & Rohit Sharma <span>— Wedding Client, Jaipur</span></p>
+    <div class="tdots">
+      <button class="tdot active" data-i="0"></button>
+      <button class="tdot" data-i="1"></button>
+      <button class="tdot" data-i="2"></button>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="insta container">
+  <div class="shead reveal" style="margin-bottom:0">
+    <span class="eyebrow">Follow Along</span>
+    <h2>Latest on <span class="italic">Instagram</span></h2>
+    <a href="https://instagram.com/" target="_blank" class="insta-handle"><i class="bi bi-instagram"></i> @aryansharma.visuals</a>
+  </div>
+  <div class="insta-grid reveal">
+    <a href="https://instagram.com/" target="_blank"><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=400&q=70" alt=""/></a>
+    <a href="https://instagram.com/" target="_blank"><img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=400&q=70" alt=""/></a>
+    <a href="https://instagram.com/" target="_blank"><img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400&q=70" alt=""/></a>
+    <a href="https://instagram.com/" target="_blank"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&q=70" alt=""/></a>
+    <a href="https://instagram.com/" target="_blank"><img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=400&q=70" alt=""/></a>
+    <a href="https://instagram.com/" target="_blank"><img src="https://images.unsplash.com/photo-1487700160041-babef9c3cb55?w=400&q=70" alt=""/></a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container reveal">
+    <span class="eyebrow">Get In Touch</span>
+    <h2>Let's create<br><span class="italic" style="color:#cfcfcf">something timeless.</span></h2>
+    <div class="contact-details">
+      <div class="cd-item"><span class="cd-label">Email</span><a href="mailto:hello@aryansharma.in">hello@aryansharma.in</a></div>
+      <div class="cd-item"><span class="cd-label">Phone</span><a href="tel:+919876543210">+91 98765 43210</a></div>
+      <div class="cd-item"><span class="cd-label">Location</span><span class="cv">Jaipur, Rajasthan</span></div>
+    </div>
+    <a href="https://wa.me/919876543210" target="_blank" class="btn-wa"><i class="bi bi-whatsapp"></i> WhatsApp Me</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Aryan Sharma Photography. All rights reserved.</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-x" id="lbClose"><i class="bi bi-x"></i></button>
+  <button class="lb-nav lb-prev" id="lbPrev"><i class="bi bi-chevron-left"></i></button>
+  <img id="lbImage" src="" alt=""/>
+  <button class="lb-nav lb-next" id="lbNext"><i class="bi bi-chevron-right"></i></button>
+</div>
+
+<script>
+// Navbar
+const nav=document.getElementById('nav');
+function onScroll(){nav.classList.toggle('solid',window.scrollY>60)}
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+// Mobile menu
+const menuBtn=document.getElementById('menuBtn'),mnav=document.getElementById('mnav'),mnavClose=document.getElementById('mnavClose');
+menuBtn.onclick=()=>mnav.classList.add('open');
+mnavClose.onclick=()=>mnav.classList.remove('open');
+mnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mnav.classList.remove('open')));
+
+// Work filter
+const tabs=document.querySelectorAll('.wtab'),items=document.querySelectorAll('.masonry-item');
+tabs.forEach(t=>t.addEventListener('click',()=>{
+  tabs.forEach(x=>x.classList.remove('active'));t.classList.add('active');
+  const f=t.dataset.f;
+  items.forEach(i=>i.classList.toggle('hide',f!=='all'&&i.dataset.c!==f));
+}));
+
+// Lightbox
+const imgs=[...document.querySelectorAll('.masonry-item img')];
+let cur=0;
+const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImage');
+function openLb(i){cur=i;lbImg.src=imgs[i].src;lb.classList.add('open');document.body.style.overflow='hidden'}
+function closeLb(){lb.classList.remove('open');document.body.style.overflow=''}
+document.querySelectorAll('.masonry-item').forEach((el,i)=>el.addEventListener('click',()=>openLb(i)));
+document.getElementById('lbClose').onclick=closeLb;
+document.getElementById('lbNext').onclick=()=>{cur=(cur+1)%imgs.length;lbImg.src=imgs[cur].src};
+document.getElementById('lbPrev').onclick=()=>{cur=(cur-1+imgs.length)%imgs.length;lbImg.src=imgs[cur].src};
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')closeLb();
+  if(e.key==='ArrowRight')document.getElementById('lbNext').click();
+  if(e.key==='ArrowLeft')document.getElementById('lbPrev').click();
+});
+
+// Testimonials
+const testimonials=[
+  {text:'Aryan captured every emotion of our wedding with such artistry. We relive that day every time we look at the album.',name:'Priya & Rohit Sharma',role:'Wedding Client, Jaipur'},
+  {text:'The fashion editorial tripled our Instagram engagement. His eye for light is unlike anyone we\'ve worked with.',name:'Neha Kapoor',role:'Creative Director, KAUR Label'},
+  {text:'Our annual summit looked premium in every frame — clean editing, on-time delivery, true professionalism.',name:'Vikram Mehta',role:'CEO, TechSphere India'},
+];
+let ti=0;
+const dots=document.querySelectorAll('.tdot');
+dots.forEach(d=>d.addEventListener('click',()=>setTesti(+d.dataset.i)));
+function setTesti(i){
+  ti=i;
+  document.getElementById('ttext').textContent=testimonials[i].text;
+  document.getElementById('tby').innerHTML=testimonials[i].name+' <span>— '+testimonials[i].role+'</span>';
+  dots.forEach((d,j)=>d.classList.toggle('active',j===i));
+}
+setInterval(()=>setTesti((ti+1)%3),5500);
+
+// Reveal on scroll
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}}),{threshold:.13});
+document.querySelectorAll('.reveal').forEach(r=>ro.observe(r));
+</script>
+</body>
+</html>
